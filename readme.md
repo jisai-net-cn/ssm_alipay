@@ -1,2 +1,2 @@
-# SpringBoot+SpringWebMVC+MyBatis+Thymeleaf实现支付宝支付功能
+# SpringBoot+SpringMVC+MyBatis+Thymeleaf实现支付宝支付功能
 	

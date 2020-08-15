@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.jisai.mapper.OrdersMapper">
+<!-- 开启二级缓存 factory级别的缓存  -->
+	<cache readOnly="true"></cache>
+	<insert id="insertOrders" parameterType="orders">
+		insert into orders (order_number,order_status,order_amount,product_id,product_number,create_time) values(#{orderNumber},#{orderStatus},#{orderAmount},#{productId},#{productNumber},#{createTime});
+	</insert>
+	<resultMap type="orders" id="ordersmap">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="orderNumber" column="order_number"/>
+		<result property="orderStatus" column="order_status"/>
+		<result property="orderAmount" column="order_amount"/>
+		<result property="productId" column="product_id"/>
+		<result property="productNumber" column="product_number"/>
+		<result property="createTime" column="create_time"/>
+		<result property="paymentMethod" column="payment_method"/>
+		<result property="payTime" column="pay_time"/>
+	</resultMap>
+	<select id="selectOrdersByOrderNumber" parameterType="string" resultMap="ordersmap">
+		select * from orders where order_number=#{0}
+	</select>
+	<update id="updateOrdersByOrderNumber" parameterType="orders">
+		update orders set pay_time=#{payTime}, payment_method=#{paymentMethod}, order_status=#{orderStatus} where order_number=#{orderNumber}
+	</update>
+</mapper>

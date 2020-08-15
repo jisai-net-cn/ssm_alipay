@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.jisai.mapper.UserMapper">
+<!-- 开启二级缓存 factory级别的缓存  -->
+	<cache readOnly="true"></cache>
+	<insert id="insertUser" parameterType="user">
+		insert into user (username,password) values(#{username},#{password})
+	</insert>
+	<select id="selcetUserByNameAndPassword" parameterType="user" resultType="user">
+		select id,username,password from user where username=#{username} and password=#{password}
+	</select>
+</mapper>

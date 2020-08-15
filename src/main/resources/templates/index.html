@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+<title>主页</title>
+<style type="text/css">
+	table,th,td{
+		border-collapse: collapse;
+		border-width: 1px;
+	    padding: 8px;
+	    text-align:center;
+	    border-style: solid;
+	    border-color: #666666;
+	    background-color: #ffffff;
+	}
+	a{
+		text-decoration: none;
+	}
+</style>
+</head>
+<body>
+<span th:text="${msg}"></span>
+你好：<span th:text="${session.user.username}"></span> 欢迎访问 
+<span style="margin-left: 20px"> <a href="logout">注销登录</a> </span>
+<h2>商品列表</h2>
+<table width="600px">
+	<tr>
+		<th>商品ID</th>
+		<th>商品名称</th>
+		<th>商品价格</th>
+		<th>商品库存</th>
+		<th>操作</th>
+	</tr>
+	<tr th:each="product:${all}">
+		<td th:text=${product.id}></td>
+		<td th:text=${product.name}></td>
+		<td th:text=${product.price}></td>
+		<td th:text=${product.stock}></td>
+		<td> <a th:href="@{/buy(id=${product.id})}">购买</a> </td>
+	</tr>
+</table>
+</body>
+</html>

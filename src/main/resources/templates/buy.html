@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+<title>商品购买</title>
+</head>
+<body>
+产品ID：<span th:text="${product.id}"></span> <br>
+产品名称：<span th:text="${product.name}"></span> <br>
+产品价格：<span th:text="${product.price}"></span> <br>
+产品库存：<span th:text="${product.stock}"></span> <br>
+<form action="order">
+	<input type="hidden" th:value="${product.id}" name="id">
+	<input type="hidden" th:value="${product.name}" name="name">
+	<input type="hidden" th:value="${product.price}" name="price">
+	购买数量：<input type="text" name="num"> <br>
+	<input type="submit" value="提交订单">
+</form>
+</body>
+</html>

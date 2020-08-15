@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.jisai.mapper.ProductMapper">
+<!-- 开启二级缓存 factory级别的缓存  -->
+	<cache readOnly="true"></cache>
+	<select id="selectAll" resultType="product">
+		select id,name,price,stock from product
+	</select>
+	<select id="selectProductById" parameterType="int" resultType="product">
+		select id,name,price,stock from product where id=#{0}
+	</select>
+	<update id="updateProductByIdAndMount">
+		update product set stock=stock-#{num} where id=#{id}
+	</update>
+	<select id="selectPriceByid" resultType="double">
+		select price from product where id=#{0}
+	</select>
+</mapper>

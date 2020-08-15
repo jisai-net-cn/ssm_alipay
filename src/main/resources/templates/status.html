@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+<title>支付结果</title>
+</head>
+<body>
+<h2>支付结果如下</h2>
+订单号：<span th:text="${ordernumber}"></span>	<br>
+支付宝订单号：<span th:text="${alipaynumber}"></span>	<br>
+付款金额：<span th:text="${amount}"></span>	<br>
+数据库更新状态：<span th:text="${status}"></span>
+</body>
+</html>
